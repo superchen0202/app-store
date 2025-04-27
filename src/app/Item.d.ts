@@ -114,3 +114,7 @@ export type FetchingStage<T = AppEntryType[]> = {
   data?: T;
   error?: Error;
 };
+
+export type SkeletonNumberPropsType = {
+  skeletonNumbers: number;
+};
