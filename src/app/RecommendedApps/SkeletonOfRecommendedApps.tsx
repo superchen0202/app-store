@@ -3,8 +3,8 @@ import { SkeletonNumberPropsType } from '../Item';
 
 const SkeletonOfRecommendedApps: FC<SkeletonNumberPropsType> = (props) => (
   <>
-    {Array.from({ length: props.skeletonNumbers }).map(() => (
-      <div className="flex w-40 flex-shrink-0 animate-pulse flex-col items-center p-2">
+    {Array.from({ length: props.skeletonNumbers }).map((_, index) => (
+      <div key={index} className="flex w-40 flex-shrink-0 animate-pulse flex-col items-center p-2">
         {/* Logo */}
         <div className="w-full">
           {/* 用固定高度的灰色塊模擬圖片 */}

@@ -3,8 +3,8 @@ import { SkeletonNumberPropsType } from '../Item';
 
 const SkeletonOfAppsList: FC<SkeletonNumberPropsType> = (props) => (
   <>
-    {Array.from({ length: props.skeletonNumbers }).map(() => (
-      <div className="flex w-full animate-pulse py-3">
+    {Array.from({ length: props.skeletonNumbers }).map((_, index) => (
+      <div key={index} className="flex w-full animate-pulse py-3">
         {/* Logo */}
         <div className="flex items-center">
           <div className="h-16 w-16 rounded-full bg-gray-300" />
