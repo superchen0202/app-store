@@ -1,9 +1,13 @@
-const App = () => {
-  return (
-    <>
-      <p className="flex justify-between bg-yellow-500 p-4 text-red-500">test</p>
-    </>
-  );
-};
+import RecommendedList from './app/RecommendedApps/RecommendedList';
+import AppsList from './app/AppItem/AppsList';
+
+// https://itunes.apple.com/tw/lookup?id=[app_id]
+
+const App = () => (
+  <>
+    <RecommendedList />
+    <AppsList />
+  </>
+);
 
 export default App;

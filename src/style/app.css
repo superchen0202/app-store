@@ -1,10 +1,26 @@
 @import 'tailwindcss';
 
+@theme {
+  --breakpoint-tablet: 1024px;
+  --breakpoint-laptop: 1280px;
+  --breakpoint-desktop: 1920px;
+}
+
+@layer components {
+  .rwd-debug-bg-color {
+    @apply laptop:bg-blue-100 desktop:bg-green-100 bg-red-100;
+  }
+
+  .hover-effect {
+    @apply bg-transparent transition-colors duration-900 ease-in-out hover:cursor-pointer hover:bg-gray-300/30;
+  }
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .logo {
