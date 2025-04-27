@@ -4,6 +4,7 @@ import { SimplifiedAppEntryType } from '../Item';
 const RecommendedApp: FC<SimplifiedAppEntryType> = (props) => {
   const { name, imageSizes, category } = props;
   const [base, medium, large] = imageSizes;
+
   return (
     // title={summary.label}
     <div className="flex w-40 flex-shrink-0 flex-col items-center p-2">

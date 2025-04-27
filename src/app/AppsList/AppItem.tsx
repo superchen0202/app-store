@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { SimplifiedAppEntryType } from '../Item';
+import DebugDisplayer from '@/components/DebugDisplayer';
 
 const AppItem: FC<SimplifiedAppEntryType> = (props) => {
   const { name, imageSizes, price, category } = props;
