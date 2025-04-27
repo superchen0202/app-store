@@ -1,3 +1,4 @@
+import SearchBar from './app/SearchBar/SearchBar';
 import RecommendedList from './app/RecommendedApps/RecommendedList';
 import AppsList from './app/AppsList/AppsList';
 
@@ -5,6 +6,7 @@ import AppsList from './app/AppsList/AppsList';
 
 const App = () => (
   <>
+    <SearchBar />
     <RecommendedList />
     <AppsList />
   </>
