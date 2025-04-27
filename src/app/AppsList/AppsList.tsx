@@ -1,8 +1,8 @@
 import SkeletonOfAppsList from './SkeletonOfAppsList';
-import Error from '../../components/Error';
+import Error from '@/components/Error';
 import AppItem from './AppItem';
-import FallBack from '../../components/FallBack';
-import useFetchApps from '../../hooks/useFetchApps';
+import FallBack from '@/components/FallBack';
+import useFetchApps from '@/hooks/useFetchApps';
 
 const AppsList = () => {
   const { isLoading, data, error } = useFetchApps('all');

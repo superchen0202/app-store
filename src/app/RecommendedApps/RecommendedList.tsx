@@ -1,9 +1,9 @@
 import SkeletonOfRecommendedApps from './SkeletonOfRecommendedApps';
-import Error from '../../components/Error';
+import Error from '@/components/Error';
 import RecommendedContainer from './RecommendedContainer';
 import RecommendedApp from './RecommendedApp';
-import FallBack from '../../components/FallBack';
-import useFetchApps from '../../hooks/useFetchApps';
+import FallBack from '@/components/FallBack';
+import useFetchApps from '@/hooks/useFetchApps';
 
 const RecommendedList = () => {
   const { isLoading, data, error } = useFetchApps('recommended');
