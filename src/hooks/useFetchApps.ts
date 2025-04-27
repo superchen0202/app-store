@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { AppEntryType, FetchingStage, AppsFeedType } from '../app/Item';
+import { FetchingStage, AppsFeedType } from '../app/Item';
+import { simplifyAppEntry } from '@/utils/simplifyAppEntry';
 
-type AppStageType = FetchingStage<AppEntryType[]>;
-
-const initStage: AppStageType = {
+const initStage: FetchingStage = {
   isLoading: undefined,
   data: undefined,
   error: undefined,
@@ -16,7 +15,7 @@ const useFetchApps = (param: 'all' | 'recommended') => {
       ? 'https://itunes.apple.com/tw/rss/topfreeapplications/limit=100/json'
       : 'https://itunes.apple.com/tw/rss/topgrossingapplications/limit=10/json';
 
-  const [appStage, setAppStage] = useState<AppStageType>(initStage);
+  const [appStage, setAppStage] = useState<FetchingStage>(initStage);
 
   useEffect(() => {
     setAppStage((prev) => ({
@@ -28,10 +27,11 @@ const useFetchApps = (param: 'all' | 'recommended') => {
     axios
       .get(url)
       .then((resp) => {
+        const simplifiedApps = (resp.data as AppsFeedType).feed.entry.map((rawApp) => simplifyAppEntry(rawApp));
         setAppStage((prev) => ({
           ...prev,
           isLoading: false,
-          data: (resp.data as AppsFeedType).feed.entry,
+          data: simplifiedApps,
         }));
       })
       .catch((error: Error) => {

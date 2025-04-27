@@ -17,7 +17,7 @@ const AppsList = () => {
           // ([99].includes(index) || index < 10) &&
           <div className="hover-effect flex">
             <div className="my-auto mr-2 w-8 text-center">{index + 1}</div>
-            <AppItem key={app.id.attributes['im:id']} {...app} />
+            <AppItem key={app.id} {...app} />
           </div>
         ))}
       </>

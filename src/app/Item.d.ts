@@ -35,10 +35,12 @@ export type AppsFeedType = {
 };
 
 export type AppEntryType = {
+  //--- keyword for search bar---
   'im:name': {
     label: string;
   };
   'im:image': [ImageSizeType, ImageSizeType, ImageSizeType]; // [base, medium, large]
+  //--- keyword for search bar---
   summary: {
     label: string;
   };
@@ -58,6 +60,7 @@ export type AppEntryType = {
   rights: {
     label: string;
   };
+  //--- keyword for search bar---
   title: {
     label: string;
   };
@@ -109,9 +112,22 @@ type ImageSizeType = {
   };
 };
 
-export type FetchingStage<T = AppEntryType[]> = {
+export type SimplifiedAppEntryType = {
+  id: string;
+  name: string;
+  summary: string;
+  title: string;
+  imageSizes: [string, string, string];
+  price: AppEntryType['im:price']['attributes'];
+  category: string;
+};
+
+type LegalTypes = SimplifiedAppEntryType[] | 'A' | number;
+type NoUnion<T> = (T extends any ? (x: T) => any : never) extends (x: infer U) => any ? U : never;
+
+export type FetchingStage<T extends LegalTypes = SimplifiedAppEntryType[]> = {
   isLoading: boolean | undefined;
-  data?: T;
+  data?: NoUnion<T>;
   error?: Error;
 };
 

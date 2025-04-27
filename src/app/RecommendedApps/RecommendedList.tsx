@@ -21,7 +21,7 @@ const RecommendedList = () => {
         <>
           {data.map((app) => (
             <div className="hover-effect">
-              <RecommendedApp key={app.id.attributes['im:id']} {...app} />
+              <RecommendedApp key={app.id} {...app} />
             </div>
           ))}
           <hr />
