@@ -5,6 +5,8 @@
  */
 import { Input } from '@/components/ui/input';
 import { SVGProps } from 'react';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { setKeyword } from '@/redux/searchSlice';
 
 const SearchIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -25,10 +27,20 @@ const SearchIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 const SearchBar = () => {
+  const dispatch = useAppDispatch();
+  const { keyword } = useAppSelector((state) => state.searchReducer);
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => dispatch(setKeyword(event.target.value));
+
   return (
     <div className="flex w-full max-w-sm items-center space-x-2 rounded-lg border border-gray-300 bg-gray-50 px-3.5 py-2 dark:bg-gray-900">
       <SearchIcon className="h-4 w-4" />
-      <Input type="search" placeholder="Search" className="h-8 w-full border-0 font-semibold" />
+      <Input
+        value={keyword}
+        onChange={changeHandler}
+        type="search"
+        placeholder="Search"
+        className="h-8 w-full border-0 font-semibold"
+      />
     </div>
   );
 };

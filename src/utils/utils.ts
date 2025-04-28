@@ -9,3 +9,6 @@ export const simplifyAppEntry = (rawApp: AppEntryType): SimplifiedAppEntryType =
   price: rawApp['im:price'].attributes,
   category: rawApp.category.attributes.label,
 });
+
+export const searchAndFilter = (appsList: SimplifiedAppEntryType[], keyword: string) =>
+  appsList.filter((app) => [app.name, app.summary, app.title].some((field) => field.includes(keyword)));

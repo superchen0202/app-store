@@ -7,7 +7,7 @@ const RecommendedApp: FC<SimplifiedAppEntryType> = (props) => {
 
   return (
     // title={summary.label}
-    <div className="flex w-40 flex-shrink-0 flex-col items-center p-2">
+    <div className="hover-effect flex w-40 flex-shrink-0 flex-col items-center p-2">
       {/* Logo */}
       <div className="w-full">
         <picture>

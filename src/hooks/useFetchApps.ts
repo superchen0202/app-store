@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FetchingStage, AppsFeedType } from '../app/Item';
-import { simplifyAppEntry } from '@/utils/simplifyAppEntry';
+import { simplifyAppEntry } from '@/utils/utils';
 
 const initStage: FetchingStage = {
   isLoading: undefined,
