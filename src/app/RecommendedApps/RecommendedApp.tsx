@@ -11,9 +11,16 @@ const RecommendedApp: FC<SimplifiedAppEntryType> = (props) => {
       {/* Logo */}
       <div className="w-full overflow-hidden rounded-2xl bg-gray-100">
         <picture>
-          <source media="(min-width: 1920px)" srcSet={large} />
-          <source media="(min-width: 1280px)" srcSet={medium} />
-          <img src={base} alt={name} className="h-full w-full object-cover" />
+          <source media="(min-width: 1920px)" srcSet={large.src} />
+          <source media="(min-width: 1280px)" srcSet={medium.src} />
+          <img
+            loading="lazy"
+            src={base.src}
+            width={base.height}
+            height={base.height}
+            alt={name}
+            className="h-full w-full object-cover"
+          />
         </picture>
       </div>
       {/* down */}

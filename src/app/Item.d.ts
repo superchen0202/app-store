@@ -112,12 +112,17 @@ type ImageSizeType = {
   };
 };
 
+type ImgSizeType = {
+  src: string;
+  height: string;
+};
+
 export type SimplifiedAppEntryType = {
   id: string;
   name: string;
   summary: string;
   title: string;
-  imageSizes: [string, string, string];
+  imageSizes: [ImgSizeType, ImgSizeType, ImgSizeType];
   price: AppEntryType['im:price']['attributes'];
   category: string;
 };

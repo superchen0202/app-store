@@ -5,7 +5,10 @@ export const simplifyAppEntry = (rawApp: AppEntryType): SimplifiedAppEntryType =
   name: rawApp['im:name'].label,
   summary: rawApp.summary.label,
   title: rawApp.title.label,
-  imageSizes: rawApp['im:image'].map((rawApp) => rawApp.label) as SimplifiedAppEntryType['imageSizes'],
+  imageSizes: rawApp['im:image'].map((rawApp) => ({
+    src: rawApp.label,
+    height: rawApp.attributes.height,
+  })) as SimplifiedAppEntryType['imageSizes'],
   price: rawApp['im:price'].attributes,
   category: rawApp.category.attributes.label,
 });
