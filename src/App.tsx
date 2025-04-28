@@ -6,7 +6,7 @@ import AppsList from './app/AppsList/AppsList';
 const App = () => (
   <>
     <SearchBar />
-    <RecommendedList />
+    {/* <RecommendedList /> */}
     <AppsList />
   </>
 );

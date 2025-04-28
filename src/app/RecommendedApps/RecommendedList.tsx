@@ -25,9 +25,8 @@ const RecommendedList = () => {
   if (data)
     return (
       <>
-        <RecommendedContainer>
+        <RecommendedContainer promptText={<PromptMatchedMessage matchedAppsNumber={filteredRecommendedApps.length} />}>
           <>
-            <PromptMatchedMessage matchedAppsNumber={filteredRecommendedApps.length} />
             {filteredRecommendedApps.map((app) => (
               <RecommendedApp key={app.id} {...app} />
             ))}

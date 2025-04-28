@@ -16,15 +16,19 @@ const AppsList = () => {
   if (error) return <Error />;
   if (data)
     return (
-      <>
-        <PromptMatchedMessage matchedAppsNumber={filteredApps.length} />
-        {filteredApps.map((app, index) => (
-          <div key={app.id} className="hover-effect flex">
-            <div className="my-auto mr-2 w-8 text-center">{index + 1}</div>
-            <AppItem key={app.id} {...app} />
-          </div>
-        ))}
-      </>
+      <div className="px-5">
+        <div className="mt-2">
+          <PromptMatchedMessage matchedAppsNumber={filteredApps.length} />
+        </div>
+        <div className="flex flex-col divide-y divide-gray-300">
+          {filteredApps.map((app, index) => (
+            <div key={app.id} className="hover-effect flex">
+              <div className="my-auto mr-2 w-8 text-center">{index + 1}</div>
+              <AppItem key={app.id} {...app} />
+            </div>
+          ))}
+        </div>
+      </div>
     );
 
   return <FallBack />;
