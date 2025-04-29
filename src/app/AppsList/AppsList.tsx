@@ -1,8 +1,6 @@
 import SkeletonOfAppsList from './SkeletonOfAppsList';
 import Error from '@/components/Error';
 import AppItem from './AppItem';
-import FallBack from '@/components/FallBack';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import useFetchApps from '@/hooks/useFetchApps';
 import { useAppSelector } from '@/redux/hooks';
 import { searchAndFilter } from '@/utils/utils';
@@ -19,7 +17,12 @@ const AppsList = () => {
   const filteredApps = useMemo(() => searchAndFilter(data ?? [], keyword), [data, keyword]);
   const { visibleCount, isLoadingMore, isEndReached } = useInfiniteScroll(filteredApps.length, pagesGroupNumber);
 
-  if (isLoading) return <SkeletonOfAppsList skeletonNumbers={pagesGroupNumber} />;
+  if (isLoading)
+    return (
+      <div className="px-5">
+        <SkeletonOfAppsList skeletonNumbers={pagesGroupNumber} />
+      </div>
+    );
   if (error) return <Error />;
   if (data)
     return (
@@ -36,13 +39,13 @@ const AppsList = () => {
             </div>
           ))}
 
-          {isLoadingMore && <LoadingSpinner />}
+          {isLoadingMore && <SkeletonOfAppsList skeletonNumbers={pagesGroupNumber} />}
           {isEndReached && <div className="py-4 text-center text-sm text-gray-400">已載入全部內容</div>}
         </div>
       </div>
     );
 
-  return <FallBack />;
+  return <></>;
 };
 
 export default AppsList;

@@ -36,7 +36,7 @@ const RecommendedList = () => {
       </>
     );
 
-  return <FallBack />;
+  return <></>;
 };
 
 export default RecommendedList;
