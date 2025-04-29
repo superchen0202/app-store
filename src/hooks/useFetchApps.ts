@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { FetchingStage, AppsFeedType } from '../app/Item';
 import { simplifyAppEntry } from '@/utils/utils';
+import { safeGetCache, safeSetCache } from '@/utils/utils';
 
 const initStage: FetchingStage = {
   isLoading: undefined,
@@ -15,37 +16,52 @@ const useFetchApps = (param: 'all' | 'recommended') => {
       ? 'https://itunes.apple.com/tw/rss/topfreeapplications/limit=100/json'
       : 'https://itunes.apple.com/tw/rss/topgrossingapplications/limit=10/json';
 
+  const localStorageKey = `apps-${param}`;
+
   const [appStage, setAppStage] = useState<FetchingStage>(initStage);
 
-  useEffect(() => {
-    setAppStage((prev) => ({
-      ...prev,
-      isLoading: true,
-    }));
+  const fetchData = useCallback(
+    async (url: string, controller: AbortController) => {
+      setAppStage({ ...initStage, isLoading: true });
 
-    //TODO AbortController
-    axios
-      .get(url)
-      .then((resp) => {
+      try {
+        const cached = safeGetCache(localStorageKey);
+
+        if (cached) {
+          setAppStage({ isLoading: false, data: cached, error: undefined });
+          return;
+        }
+
+        // cache過期或沒cache，發出Request
+        const resp = await axios.get(url, { signal: controller.signal });
         const simplifiedApps = (resp.data as AppsFeedType).feed.entry.map((rawApp) => simplifyAppEntry(rawApp));
-        setAppStage((prev) => ({
-          ...prev,
+
+        safeSetCache(localStorageKey, simplifiedApps);
+        setAppStage({
           isLoading: false,
           data: simplifiedApps,
-        }));
-      })
-      .catch((error: Error) => {
-        setAppStage((prev) => ({
-          ...prev,
+          error: undefined,
+        });
+      } catch (error) {
+        setAppStage({
           isLoading: false,
-          error: error,
-        }));
-      });
+          data: undefined,
+          error: error as Error,
+        });
+      }
+    },
+    [localStorageKey],
+  );
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetchData(url, controller);
 
     return () => {
+      controller.abort();
       setAppStage(initStage);
     };
-  }, [url]);
+  }, [fetchData, url]);
 
   return {
     isLoading: appStage?.isLoading,

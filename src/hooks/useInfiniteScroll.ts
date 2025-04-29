@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
 const DEBUG_MODE = true;
-const DEBUG_DELAY_MS = 1500;
+const DEBUG_DELAY_MS = 0;
 
 const useInfiniteScroll = (filteredAppsLength: number, pagesGroupNumber: number) => {
   const [visibleCount, setVisibleCount] = useState(pagesGroupNumber);
