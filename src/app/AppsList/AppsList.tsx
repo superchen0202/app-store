@@ -3,7 +3,7 @@ import Error from '@/components/Error';
 import AppItem from './AppItem';
 import useFetchApps from '@/hooks/useFetchApps';
 import { useAppSelector } from '@/redux/hooks';
-import { searchAndFilter } from '@/utils/utils';
+import { searchAndFilter } from '@/utils/helpers';
 import PromptMatchedMessage from '@/components/PromptMatchedMessage';
 import { useMemo } from 'react';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';

@@ -57,3 +57,5 @@ export const safeSetCache = <T = SimplifiedAppEntryType[]>(key: string, cache_va
     console.warn(`Failed to set cache for key "${key}":`, error);
   }
 };
+
+export const add = (a: number, b: number) => a + b;

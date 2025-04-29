@@ -4,7 +4,7 @@ import RecommendedContainer from './RecommendedContainer';
 import RecommendedApp from './RecommendedApp';
 import useFetchApps from '@/hooks/useFetchApps';
 import { useAppSelector } from '@/redux/hooks';
-import { searchAndFilter } from '@/utils/utils';
+import { searchAndFilter } from '@/utils/helpers';
 import PromptMatchedMessage from '@/components/PromptMatchedMessage';
 
 const RecommendedList = () => {
