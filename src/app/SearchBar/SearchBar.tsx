@@ -36,7 +36,7 @@ const SearchBar = () => {
 
   return (
     <>
-      <div className="mb-6 bg-gray-100 pt-2">
+      <div className="bg-gray-100 pt-2">
         <div className="pb-2">
           <div className="relative mx-auto flex w-full max-w-[90%] items-center justify-center rounded-2xl border border-gray-300 bg-gray-200 px-6 py-1 focus-within:ring-2 focus-within:ring-gray-300 dark:bg-gray-900">
             <div className="relative w-full">
