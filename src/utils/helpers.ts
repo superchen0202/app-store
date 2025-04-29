@@ -1,4 +1,4 @@
-import { AppEntryType, SimplifiedAppEntryType } from '@/app/Item';
+import { AppEntryType, SimplifiedAppEntryType, SearchableAppEntryType } from '@/app/Item';
 
 export const simplifyAppEntry = (rawApp: AppEntryType): SimplifiedAppEntryType => ({
   id: rawApp['id']['attributes']['im:id'],
@@ -13,7 +13,7 @@ export const simplifyAppEntry = (rawApp: AppEntryType): SimplifiedAppEntryType =
   category: rawApp.category.attributes.label,
 });
 
-export const searchAndFilter = (appsList: SimplifiedAppEntryType[], keyword: string) =>
+export const searchAndFilter = <T extends SearchableAppEntryType>(appsList: T[], keyword: string): T[] =>
   appsList.filter((app) => [app.name, app.summary, app.title].some((field) => field.includes(keyword)));
 
 const CACHE_EXPIRATION_MS = 60 * 60 * 1000;

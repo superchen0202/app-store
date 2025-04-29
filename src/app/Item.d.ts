@@ -127,7 +127,9 @@ export type SimplifiedAppEntryType = {
   category: string;
 };
 
-type LegalTypes = SimplifiedAppEntryType[] | 'A' | number;
+export type SearchableAppEntryType = Pick<SimplifiedAppEntryType, 'name' | 'summary' | 'title'>;
+
+type LegalTypes = AppEntryType[] | SimplifiedAppEntryType[];
 type NoUnion<T> = (T extends any ? (x: T) => any : never) extends (x: infer U) => any ? U : never;
 
 export type FetchingStage<T extends LegalTypes = SimplifiedAppEntryType[]> = {
