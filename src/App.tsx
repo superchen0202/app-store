@@ -7,7 +7,6 @@ const App = () => (
   <>
     <div className="fixed top-0 left-0 z-10 w-full">
       <div className="mx-auto max-w-[1280px] px-8">
-        {/* SearchBar 的內容 */}
         <SearchBar />
       </div>
     </div>

@@ -1,0 +1,7 @@
+const LoadingSpinner = () => (
+  <div className="flex justify-center py-4">
+    <div className="h-6 w-6 animate-spin rounded-full border-2 border-gray-300 border-t-transparent" />
+  </div>
+);
+
+export default LoadingSpinner;
