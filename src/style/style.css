@@ -67,6 +67,7 @@ button:focus-visible {
 .scrollbar-hidden::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
