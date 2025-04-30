@@ -1,4 +1,4 @@
-import { AppEntryType, SearchableAppEntryType } from '../../app/Item';
+import { AppEntryType, SearchableAppEntryType } from '../../types/types';
 
 export const rawApp: AppEntryType = {
   'im:name': {

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { SimplifiedAppEntryType } from '../Item';
+import { SimplifiedAppEntryType } from '../../types/types';
 
 const RecommendedApp: FC<SimplifiedAppEntryType> = (props) => {
   const { name, imageSizes, category } = props;

@@ -1,4 +1,4 @@
-import { AppEntryType, SimplifiedAppEntryType, SearchableAppEntryType } from '@/app/Item';
+import { AppEntryType, SimplifiedAppEntryType, SearchableAppEntryType } from '@/types/types';
 
 export const simplifyAppEntry = (rawApp: AppEntryType): SimplifiedAppEntryType => ({
   id: rawApp['id']['attributes']['im:id'],

@@ -23,7 +23,7 @@ const AppsList = () => {
         <SkeletonOfAppsList skeletonNumbers={pagesGroupNumber} />
       </div>
     );
-  if (error) return <Error />;
+  if (error) return <Error error={error} />;
   if (data)
     return (
       <div className="px-5">

@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
-import { FetchingStage, AppsFeedType } from '../app/Item';
+import { FetchingStage, AppsFeedType } from '../types/types';
 import { simplifyAppEntry } from '@/utils/helpers';
 import { safeGetCache, safeSetCache } from '@/utils/helpers';
 

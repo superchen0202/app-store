@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "tsc -b && vite build",
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules/.vite",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",

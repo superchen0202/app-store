@@ -1,6 +1,7 @@
 import SearchBar from './app/SearchBar/SearchBar';
-import RecommendedList from './app/RecommendedApps/RecommendedList';
-import AppsList from './app/AppsList/AppsList';
+import { Suspense, lazy } from 'react';
+const RecommendedList = lazy(() => import('./app/RecommendedApps/RecommendedList'));
+const AppsList = lazy(() => import('./app/AppsList/AppsList'));
 
 // https://itunes.apple.com/tw/lookup?id=[app_id]
 const App = () => (
@@ -12,8 +13,12 @@ const App = () => (
     </div>
 
     <div className="mx-auto max-w-[1280px] px-8 pt-[64px]">
-      <RecommendedList />
-      <AppsList />
+      <Suspense fallback={<div>載入推薦中...</div>}>
+        <RecommendedList />
+      </Suspense>
+      <Suspense fallback={<div>載入 App 清單中...</div>}>
+        <AppsList />
+      </Suspense>
     </div>
   </>
 );

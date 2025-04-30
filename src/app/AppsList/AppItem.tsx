@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { SimplifiedAppEntryType } from '../Item';
+import { SimplifiedAppEntryType } from '../../types/types';
 
 const AppItem: FC<SimplifiedAppEntryType> = (props) => {
   const { name, imageSizes, price, category } = props;

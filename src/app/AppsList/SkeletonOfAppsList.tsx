@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { SkeletonNumberPropsType } from '../Item';
+import { SkeletonNumberPropsType } from '../../types/types';
 
 const SkeletonOfAppsList: FC<SkeletonNumberPropsType> = (props) => (
   <>
